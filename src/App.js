@@ -17,9 +17,7 @@ const Links = () => {
   </ul>
 }
 
-const baseUrl = (process.env.NODE_ENV === "development")
-  ? "/aa"
-  : "/example-motion-routing" 
+const baseUrl = "/example-motion-routing" 
 
 class App extends Component {
   render() {
