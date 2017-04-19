@@ -19,23 +19,22 @@ const Links = () => {
 
 const baseUrl = "/example-motion-routing" 
 
-class App extends Component {
-  render() {
-    return (
-      <BrowserRouter basename={baseUrl}>
-        <div className="App">
-          <Route path={`/:progress`}>{ ( {match} ) => {
-            const progress = match.params.progress
-            return <ProgressBar progress={progress} />
-          }}</Route>
-          <Route path="/" render={() => (
-            <Redirect to="/40"/>
-          )}/>
-          <Links />
-        </div>
-      </BrowserRouter>
-    );
-  }
+const App = () => {
+  return (
+    <BrowserRouter basename={baseUrl}>
+      <div className="App">
+        <Route exact path="/" render={() => (
+          <Redirect to="/40"/>
+        )}/>
+
+        <Route path={`/:progress`}>{ ( {match} ) => {
+          const progress = match.params.progress
+          return <ProgressBar progress={progress} />
+        }}</Route>
+        <Links />
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;
