@@ -14,11 +14,11 @@ const Bar = ({width}) => {
 
 export class ProgressBar extends React.Component {
   shouldComponentUpdate(nextProps){
-    return typeof parseInt(nextProps.progress) === "number"
+    const { progress } = nextProps
+    return !isNaN(parseInt(progress, 10))
   }
   render() {
-    const progress = parseInt(this.props.progress)
-    console.log(progress)
+    const progress = parseInt(this.props.progress, 10)
     return <Motion defaultStyle={{width: 0}} style={{width: spring(progress)}}>{ (value) => {
       return <div>
         <div>{Math.ceil(value.width)}%</div>

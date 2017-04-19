@@ -6,15 +6,15 @@ import {
   Route,
   Link,
   Redirect,
-  Switch
 } from 'react-router-dom'
 
 const Links = () => {
   return <ul>{
     [...Array(11).keys()].map( (_, i) => {
       return <li key={i}><Link to={`/${i*10}`}>{i*10}%</Link></li>
-    }
-  )}</ul>
+    })}
+    <li><Link to={`/invalid`}>invalid</Link></li>
+  </ul>
 }
 class App extends Component {
   render() {
