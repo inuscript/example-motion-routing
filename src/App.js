@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { ProgressBar } from "./Progress"
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Route,
   Link,
   Redirect,
@@ -19,7 +19,7 @@ const Links = () => {
 class App extends Component {
   render() {
     return (
-      <Router>
+      <BrowserRouter>
         <div className="App">
           <Route path="/:progress">{ ( {match} ) => {
             const { progress } = match.params
@@ -30,7 +30,7 @@ class App extends Component {
           )}/>
           <Links />
         </div>
-      </Router>
+      </BrowserRouter>
     );
   }
 }
