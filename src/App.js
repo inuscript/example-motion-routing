@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import { ProgressBar } from "./Progress"
 import {
@@ -17,6 +17,7 @@ const Links = () => {
   </ul>
 }
 
+
 const baseUrl = "/example-motion-routing" 
 
 const App = () => {
@@ -26,15 +27,16 @@ const App = () => {
         <Route exact path="/" render={() => (
           <Redirect to="/40"/>
         )}/>
-
-        <Route path={`/:progress`}>{ ( {match} ) => {
-          const progress = match.params.progress
-          return <ProgressBar progress={progress} />
-        }}</Route>
+        <Route path={`/:progress`} component={ProgressRoute} />
         <Links />
       </div>
     </BrowserRouter>
   );
+}
+
+const ProgressRoute = ({match}) => {
+  const { progress } = match.params
+  return <ProgressBar progress={progress} />
 }
 
 export default App;
