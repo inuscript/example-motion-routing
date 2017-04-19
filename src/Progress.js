@@ -1,14 +1,27 @@
 import React from "react"
 import { Motion, spring } from "react-motion"
-import "./progress.css"
+import styled from "styled-components"
+
+const BarContainer = styled.div`
+  width:500px;
+  position: relative;
+  height: 10px;
+  background: lightgray;
+`
+const BarInnter = styled.div`
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 0;
+  background-color: red;
+  overflow: hidden;
+`
 
 const Bar = ({width}) => {
   return (
-    <div className={"progress"}>
-      <div className={"barBase"}>
-        <span className={"bar"} style={ {width: `${width}%`} } />
-      </div>
-    </div>
+    <BarContainer>
+      <BarInnter style={ {width: `${width}%`} } />
+    </BarContainer>
   )
 }
 
