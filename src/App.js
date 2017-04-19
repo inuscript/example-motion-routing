@@ -18,7 +18,7 @@ const Links = () => {
 }
 
 const baseUrl = (process.env.NODE_ENV === "development")
-  ? ""
+  ? "/aa"
   : "/example-motion-routing" 
 
 class App extends Component {
@@ -26,15 +26,8 @@ class App extends Component {
     return (
       <BrowserRouter basename={baseUrl}>
         <div className="App">
-          <Route path={`${baseUrl}/:progress`}>{ ( {match} ) => {
-            let progress = 0
-            console.log(match)
-            try{
-              progress = match.params.progress
-            }catch(e){
-              console.log(e)
-            }
-            console.log(progress)
+          <Route path={`/:progress`}>{ ( {match} ) => {
+            const progress = match.params.progress
             return <ProgressBar progress={progress} />
           }}</Route>
           <Route path="/" render={() => (
