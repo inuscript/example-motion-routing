@@ -1,6 +1,14 @@
 import React from "react"
 import { Motion, spring } from "react-motion"
-import styles from "./progress.css"
+import "./progress.css"
+
+const Bar = ({width}) => (
+  <div className={"progress"}>
+    <div className={"barBase"}>
+      <span className={"bar"} style={ {width: `${width}%`} } />
+    </div>
+  </div>
+)
 
 export class ProgressBar extends React.Component {
   shouldComponentUpdate(nextProps){
@@ -8,12 +16,8 @@ export class ProgressBar extends React.Component {
   }
   render() {
     const { progress } = this.props
-    return <Motion defaultStyle={{width: 0}} style={{width: spring(progress)}}>{value =>
-      <div className={styles.progress}>
-        <div className={styles.barBase}>
-          <span className={styles.bar} style={ {width: `${value.width}%`} } />
-        </div>
-      </div>
+    return <Motion defaultStyle={{width: 0}} style={{width: spring(progress)}}>{ (value) =>
+      <Bar width={value.width} />
     }</Motion>
   }
 }
