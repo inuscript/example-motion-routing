@@ -17,10 +17,10 @@ const BarInnter = styled.div`
   background-color: darkslateblue;
 `
 
-const Bar = ({width}) => {
+const Bar = ({width, color}) => {
   return (
     <BarContainer>
-      <BarInnter style={ {width: `${width}%`} } />
+      <BarInnter style={ {width: `${width}%`, backgroundColor: color} } />
     </BarContainer>
   )
 }
@@ -33,10 +33,14 @@ export class ProgressBar extends React.Component {
   }
   render() {
     const progress = parseInt(this.props.progress, 10)
-    return <Motion defaultStyle={{p: 0}} style={{p: spring(progress)}}>{ (value) => {
+    return <Motion defaultStyle={{p: 0, color: 0}} style={{
+      p: spring(progress), 
+      color: spring(progress, {stiffness: 1000, damping: 5} )
+    }}>{ (value) => {
+      console.log(value.color)
       return <div>
         <div>{Math.ceil(value.p)}%</div>
-        <Bar width={value.p} />
+        <Bar width={`${value.p}`} color={`hsl(${value.color*2}, 50%, 50%)`} />
       </div>
     }}</Motion>
   }
