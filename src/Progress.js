@@ -37,7 +37,6 @@ export class ProgressBar extends React.Component {
       p: spring(progress), 
       color: spring(progress, {stiffness: 1000, damping: 5} )
     }}>{ (value) => {
-      console.log(value.color)
       return <div>
         <div>{Math.ceil(value.p)}%</div>
         <Bar width={`${value.p}`} color={`hsl(${value.color*2}, 50%, 50%)`} />
