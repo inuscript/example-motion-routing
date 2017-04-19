@@ -16,10 +16,12 @@ const Links = () => {
     <li><Link to={`/invalid`}>invalid</Link></li>
   </ul>
 }
+
+const baseUrl = process.env.NODE_ENV === "production" ? "/example-motion-routing" : ""
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={baseUrl}>
         <div className="App">
           <Route path="/:progress">{ ( {match} ) => {
             const { progress } = match.params
