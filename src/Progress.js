@@ -5,16 +5,16 @@ import styled from "styled-components"
 const BarContainer = styled.div`
   width:500px;
   position: relative;
-  height: 10px;
+  height: 20px;
   background: lightgray;
 `
 const BarInnter = styled.div`
   display: block;
   position: relative;
+  overflow: hidden;
   height: 100%;
   width: 0;
-  background-color: red;
-  overflow: hidden;
+  background-color: darkslateblue;
 `
 
 const Bar = ({width}) => {
